@@ -5,10 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <title>Weather App</title>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>Weather App</h1>
+    </div>
+    <div class="content">
+        <div class="searchbar-container">
+            <form class="search-form">
+                <input type="search" name="search" id="search" placeholder="Search Location...">
+                <button type="submit" id="search-button"></button>
+            </form>
+            <div class="error">
+                <p>City not found.</p>
+                <p>Valid formats: (city), (city,country), or (city,state,country) for US.</p>
+            </div>
+        </div>
+        <div class="lat-lon">
+            <h1 class="lat"></h1>
+            <h1 class="lon"></h1>
+        </div>
+        <div class="weather-today"></div>
+        <div class="five-day-forecast"></div>
+    </div>
 </body>
 </html>

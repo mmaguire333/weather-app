@@ -1,3 +1,47 @@
 body {
     display: block;
 }
+
+.searchbar-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form {
+    height: 30px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#search {
+    height: 25px;
+    font-size: 20px;
+    flex-grow: 2;
+    border: none;
+}
+
+#search:focus {
+    outline: none;
+}
+
+#search-button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: transparent url(./Icons/magnify.svg) no-repeat center;
+}
+
+.error { 
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 15px;
+}
+
+.error > p {
+    margin: 0;
+}
