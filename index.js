@@ -36,8 +36,13 @@ async function getFiveDayForecastData(city) {
 }
 
 const searchForm = document.querySelector('.search-form');
-searchForm.addEventListener('submit', (e) => {
+searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const searchValue = document.getElementById('search').value;
+  const currentWeather = await getCurrentWeatherData(searchValue);
+  const forecast = await getFiveDayForecastData(searchValue);
+  console.log(currentWeather);
+  console.log(forecast);
 });
 
 // Remove error messsage when search input is changed
