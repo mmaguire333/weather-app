@@ -22,14 +22,21 @@ async function getFiveDayForecastData(city) {
   const latLon = await getLatLong(city);
   const forecastArray = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLon[0]}&lon=${latLon[1]}&appid=45e75944bb8affc837985a8360bb4a02&units=imperial`, { mode: 'cors' })
     .then((response) => response.json())
-    .then((data) => data.list);
+    .then((data) => [data.list, data.city]);
   const dataArray = [];
-  for (let i = 0; i < forecastArray.length; i += 1) {
+  for (let i = 0; i < forecastArray[0].length; i += 1) {
+    const currentUnixDateTimeMilliseconds = forecastArray[0][i].dt * 1000;
+    const timezone = forecastArray[1].timezone * 1000;
+    const localDateTime = new Date(currentUnixDateTimeMilliseconds + timezone)
+      .toString()
+      .substring(0, 24);
+
     dataArray.push({
-      time: forecastArray[i].dt_txt,
-      temp: forecastArray[i].main.temp,
-      feelsLike: forecastArray[i].main.feels_like,
-      description: forecastArray[i].weather[0].description,
+      localDateTimeString: localDateTime,
+      temp: forecastArray[0][i].main.temp,
+      feelsLike: forecastArray[0][i].main.feels_like,
+      probabilityOfPrecip: forecastArray[0][i].pop,
+      description: forecastArray[0][i].weather[0].description,
     });
   }
   return dataArray;
