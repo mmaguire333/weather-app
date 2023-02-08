@@ -1,26 +1,48 @@
-body {
-    display: block;
+.content {
+    width: 50vw;
+    height: 80vh;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-header {
+    height: 10%;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.city-name {
+    text-align: center;
+    font-size: 34px;
+    flex-grow: 1;
 }
 
 .searchbar-container {
-    width: 400px;
+    width: 200px;
     display: flex;
     flex-direction: column;
-}
-
-.search-form {
-    height: 30px;
-    width: 300px;
-    display: flex;
-    align-items: center;
     border: 2px solid black;
     border-radius: 5px;
 }
 
+.search-form {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
 #search {
     height: 25px;
+    width: 90%;
     font-size: 20px;
-    flex-grow: 2;
+    flex-grow: 1;
     border: none;
 }
 
@@ -29,7 +51,7 @@ body {
 }
 
 #search-button {
-    width: 25px;
+    width: 10%;
     height: 25px;
     border: none;
     background: transparent url(./Icons/magnify.svg) no-repeat center;
@@ -44,4 +66,49 @@ body {
 
 .error > p {
     margin: 0;
+}
+
+.current-weather {
+    background-color: lightblue;
+    height: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.current-weather-data {
+    background-color: aqua;
+    height: 90%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.temperature {
+    font-size: 70px;
+    margin: 0;
+}
+
+.icon-and-description {
+    background-color: aquamarine;
+    height: 90%;
+    width: 40%;;
+}
+
+.five-day-forecast {
+    background-color: lightgreen;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.day-one, .day-two, .day-three, .day-four, .day-five {
+    height: 18%;
+    background-color: lightcoral;
+    display: flex;
+    justify-content: space-between;
 }

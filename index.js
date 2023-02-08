@@ -13,7 +13,10 @@ async function getCurrentWeatherData(city) {
       temp: currentData.main.temp,
       feelsLike: currentData.main.feels_like,
       description: currentData.weather[0].description,
+      iconCode: currentData.weather[0].icon,
       windSpeed: currentData.wind.speed,
+      windDirection: currentData.wind.deg,
+      city: currentData.name,
     }));
   return currentWeather;
 }
@@ -48,8 +51,39 @@ searchForm.addEventListener('submit', async (e) => {
   const searchValue = document.getElementById('search').value;
   const currentWeather = await getCurrentWeatherData(searchValue);
   const forecast = await getFiveDayForecastData(searchValue);
-  console.log(currentWeather);
-  console.log(forecast);
+
+  // set header to the name of the city
+  document.querySelector('.city-name-header').textContent = currentWeather.city;
+
+  // add info to current weather section
+  let canonicalDirection = '';
+  const directionDegrees = currentWeather.windDirection;
+  document.querySelector('.temperature').textContent = `${Math.round(currentWeather.temp)} °F`;
+  document.querySelector('.feels-like').textContent = `Feels Like: ${Math.round(currentWeather.feelsLike)} °F`;
+
+  if (directionDegrees > 337.5 || directionDegrees <= 22.5) {
+    canonicalDirection = 'N';
+  } else if (directionDegrees > 22.5 && directionDegrees <= 67.5) {
+    canonicalDirection = 'NE';
+  } else if (directionDegrees > 67.5 && directionDegrees <= 112.5) {
+    canonicalDirection = 'E';
+  } else if (directionDegrees > 112.5 && directionDegrees <= 157.5) {
+    canonicalDirection = 'SE';
+  } else if (directionDegrees > 157.5 && directionDegrees <= 202.5) {
+    canonicalDirection = 'S';
+  } else if (directionDegrees > 202.5 && directionDegrees <= 247.5) {
+    canonicalDirection = 'SW';
+  } else if (directionDegrees > 247.5 && directionDegrees <= 292.5) {
+    canonicalDirection = 'W';
+  } else if (directionDegrees > 292.5 && directionDegrees <= 337.5) {
+    canonicalDirection = 'NW';
+  } else {
+    canonicalDirection = '';
+  }
+
+  document.querySelector('.wind').textContent = `Wind: ${currentWeather.windSpeed} mph ${canonicalDirection}`;
+
+  document.querySelector('.description').textContent = currentWeather.description;
 });
 
 // Remove error messsage when search input is changed

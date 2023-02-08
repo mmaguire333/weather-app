@@ -13,22 +13,64 @@
         <h1>Weather App</h1>
     </div>
     <div class="content">
-        <div class="searchbar-container">
-            <form class="search-form">
-                <input type="search" name="search" id="search" placeholder="Search Location...">
-                <button type="submit" id="search-button"></button>
-            </form>
-            <div class="error">
-                <p>City not found.</p>
-                <p>Valid formats: (city), (city,country), or (city,state,country) for US.</p>
+        <div class="content-header">
+            <div class="searchbar-container">
+                <form class="search-form" autocomplete="off">
+                    <input type="text" name="search" id="search" placeholder="Search Location...">
+                    <button type="submit" id="search-button"></button>
+                </form>
+                <div class="error">
+                    <p>City not found.</p>
+                    <p>Valid formats: (city), (city,country), or (city,state,country) for US.</p>
+                </div>
+            </div>
+            <div class="city-name">
+                <h2 class="city-name-header">placeholder</h2>
             </div>
         </div>
-        <div class="lat-lon">
-            <h1 class="lat"></h1>
-            <h1 class="lon"></h1>
+        <div class="current-weather">
+            <div class="current-weather-data">
+                <h3 class="temperature"></h3>
+                <p class="feels-like"></p>
+                <p class="wind"></p>
+            </div>
+            <div class="icon-and-description">
+                <h1>image-goes-here</h1>
+                <p class="description"></p>
+            </div>
         </div>
-        <div class="weather-today"></div>
-        <div class="five-day-forecast"></div>
+        <div class="five-day-forecast">
+            <div class="day-one">
+                <p class="weekday">weekday</p>
+                <p class="precipitation-probability">POP%</p>
+                <p class="high-temp">high</p>
+                <p class="low-temp">low</p>
+            </div>
+            <div class="day-two">
+                <p class="weekday">weekday</p>
+                <p class="precipitation-probability">POP%</p>
+                <p class="high-temp">high</p>
+                <p class="low-temp">low</p>
+            </div>
+            <div class="day-three">
+                <p class="weekday">weekday</p>
+                <p class="precipitation-probability">POP%</p>
+                <p class="high-temp">high</p>
+                <p class="low-temp">low</p>
+            </div>
+            <div class="day-four">
+                <p class="weekday">weekday</p>
+                <p class="precipitation-probability">POP%</p>
+                <p class="high-temp">high</p>
+                <p class="low-temp">low</p>
+            </div>
+            <div class="day-five">
+                <p class="weekday">weekday</p>
+                <p class="precipitation-probability">POP%</p>
+                <p class="high-temp">high</p>
+                <p class="low-temp">low</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
