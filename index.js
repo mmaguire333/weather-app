@@ -30,22 +30,26 @@ async function getFiveDayForecastData(city) {
   for (let i = 0; i < forecastArray[0].length; i += 1) {
     const currentUnixDateTimeMilliseconds = forecastArray[0][i].dt * 1000;
     const timezone = forecastArray[1].timezone * 1000;
-    const localDateTime = new Date(currentUnixDateTimeMilliseconds + timezone)
+    const userTimeZoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
+    const localDateTime = new Date(currentUnixDateTimeMilliseconds + timezone + userTimeZoneOffset)
       .toString()
       .substring(0, 24);
-
     dataArray.push({
       localDateTimeString: localDateTime,
       temp: forecastArray[0][i].main.temp,
       feelsLike: forecastArray[0][i].main.feels_like,
       probabilityOfPrecip: forecastArray[0][i].pop,
       description: forecastArray[0][i].weather[0].description,
+      iconCode: forecastArray[0][i].weather[0].icon,
     });
   }
   return dataArray;
 }
 
+// display weather data on submitting city
 const searchForm = document.querySelector('.search-form');
+const forecastContainer = document.querySelector('.five-day-forecast');
+
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const searchValue = document.getElementById('search').value;
@@ -83,9 +87,10 @@ searchForm.addEventListener('submit', async (e) => {
 
   document.querySelector('.wind').textContent = `Wind: ${currentWeather.windSpeed} mph ${canonicalDirection}`;
   document.querySelector('.description').textContent = currentWeather.description;
+  document.getElementById('current-description-image').src = `./Icons/${currentWeather.iconCode}.png`;
 
   // display hourly forecast
-  const forecastContainer = document.querySelector('.five-day-forecast');
+  forecastContainer.innerHTML = '';
   for (let i = 0; i < forecast.length; i += 1) {
     const hourlyDataContainer = document.createElement('div');
     hourlyDataContainer.classList.add('hourly-data');
@@ -111,7 +116,7 @@ searchForm.addEventListener('submit', async (e) => {
     hourlyDescription.textContent = forecast[i].description;
 
     const hourlyImage = document.createElement('img');
-    hourlyImage.src = '';
+    hourlyImage.src = `./Icons/${forecast[i].iconCode}.png`;
 
     hourlyDataContainer.appendChild(weekday);
     hourlyDataContainer.appendChild(hourlyTemp);
