@@ -1,7 +1,10 @@
 async function getLatLong(city) {
   const latLonArray = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=45e75944bb8affc837985a8360bb4a02`, { mode: 'cors' })
     .then((response) => response.json())
-    .then((response) => [response[0].lat, response[0].lon]);
+    .then((response) => [response[0].lat, response[0].lon])
+    .catch(() => {
+      document.querySelector('.error').style.display = 'flex';
+    });
   return latLonArray;
 }
 
@@ -17,7 +20,10 @@ async function getCurrentWeatherData(city) {
       windSpeed: currentData.wind.speed,
       windDirection: currentData.wind.deg,
       city: currentData.name,
-    }));
+    }))
+    .catch(() => {
+      document.querySelector('.error').style.display = 'flex';
+    });
   return currentWeather;
 }
 
@@ -25,7 +31,10 @@ async function getFiveDayForecastData(city) {
   const latLon = await getLatLong(city);
   const forecastArray = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLon[0]}&lon=${latLon[1]}&appid=45e75944bb8affc837985a8360bb4a02&units=imperial`, { mode: 'cors' })
     .then((response) => response.json())
-    .then((data) => [data.list, data.city]);
+    .then((data) => [data.list, data.city])
+    .catch(() => {
+      document.querySelector('.error').style.display = 'flex';
+    });
   const dataArray = [];
   for (let i = 0; i < forecastArray[0].length; i += 1) {
     const currentUnixDateTimeMilliseconds = forecastArray[0][i].dt * 1000;
@@ -126,6 +135,8 @@ searchForm.addEventListener('submit', async (e) => {
     hourlyDataContainer.appendChild(hourlyImage);
     forecastContainer.appendChild(hourlyDataContainer);
   }
+
+  searchForm.reset();
 });
 
 // Remove error messsage when search input is changed
