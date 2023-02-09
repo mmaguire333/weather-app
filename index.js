@@ -82,8 +82,45 @@ searchForm.addEventListener('submit', async (e) => {
   }
 
   document.querySelector('.wind').textContent = `Wind: ${currentWeather.windSpeed} mph ${canonicalDirection}`;
-
   document.querySelector('.description').textContent = currentWeather.description;
+
+  // display hourly forecast
+  const forecastContainer = document.querySelector('.five-day-forecast');
+  for (let i = 0; i < forecast.length; i += 1) {
+    const hourlyDataContainer = document.createElement('div');
+    hourlyDataContainer.classList.add('hourly-data');
+
+    const weekday = document.createElement('p');
+    weekday.classList.add('weekday');
+    weekday.textContent = forecast[i].localDateTimeString;
+
+    const hourlyTemp = document.createElement('p');
+    hourlyTemp.classList.add('hourly-temperature');
+    hourlyTemp.textContent = forecast[i].temp;
+
+    const hourlyFeelsLike = document.createElement('p');
+    hourlyFeelsLike.classList.add('hourly-feels-like');
+    hourlyFeelsLike.textContent = forecast[i].feelsLike;
+
+    const precipProb = document.createElement('p');
+    precipProb.classList.add('hourly-preciptation-chance');
+    precipProb.textContent = forecast[i].probabilityOfPrecip;
+
+    const hourlyDescription = document.createElement('p');
+    hourlyDescription.classList.add('hourly-description');
+    hourlyDescription.textContent = forecast[i].description;
+
+    const hourlyImage = document.createElement('img');
+    hourlyImage.src = '';
+
+    hourlyDataContainer.appendChild(weekday);
+    hourlyDataContainer.appendChild(hourlyTemp);
+    hourlyDataContainer.appendChild(hourlyFeelsLike);
+    hourlyDataContainer.appendChild(precipProb);
+    hourlyDataContainer.appendChild(hourlyDescription);
+    hourlyDataContainer.appendChild(hourlyImage);
+    forecastContainer.appendChild(hourlyDataContainer);
+  }
 });
 
 // Remove error messsage when search input is changed

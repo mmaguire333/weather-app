@@ -101,12 +101,14 @@
 .five-day-forecast {
     background-color: lightgreen;
     height: 40%;
+    padding: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    gap: 5px;
+    overflow-y: scroll;
 }
 
-.day-one, .day-two, .day-three, .day-four, .day-five {
+.hourly-data {
     height: 18%;
     background-color: lightcoral;
     display: flex;
