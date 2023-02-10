@@ -1,34 +1,50 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: linear-gradient(15deg, #0d9de3 10%, #01bfff 15%, #00ccff, 30%, #f1f1f1 60%, #7f9ba6);
+}
+
+.header {
+    text-align: center;
+}
+
+.header > h1 {
+    font-size: 60px;
+    color: #4e6969;
+}
+
 .content {
     width: 50vw;
     height: 80vh;
     padding: 10px;
-    border: 3px solid black;
+    margin: auto;
+    border: 3px solid #4e6969;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: transparent;
+    color: #f1f1f1;
 }
 
 .content-header {
     height: 10%;
     padding-left: 10px;
+    padding-right: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .city-name {
-    text-align: center;
+    text-align: right;
     font-size: 34px;
-    flex-grow: 1;
+    color:#4e6969;
 }
 
 .searchbar-container {
     width: 200px;
     display: flex;
     flex-direction: column;
-    
-    border-radius: 5px;
 }
 
 .search-form {
@@ -36,7 +52,9 @@
     width: 100%;
     display: flex;
     align-items: center;
-    border: 2px solid black;
+    border: 2px solid #4e6969;
+    border-radius: 5px;
+    background-color: white;
 }
 
 #search {
@@ -55,7 +73,7 @@
     width: 10%;
     height: 25px;
     border: none;
-    background: transparent url(./Icons/magnify.svg) no-repeat center;
+    background: white url(./Icons/magnify.svg) no-repeat center;
 }
 
 .error { 
@@ -70,7 +88,6 @@
 }
 
 .current-weather {
-    background-color: lightblue;
     height: 40%;
     display: flex;
     justify-content: space-evenly;
@@ -78,13 +95,16 @@
 }
 
 .current-weather-data {
-    background-color: aqua;
     height: 90%;
     width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15%;
+    border: 1px solid #4e6969;
+    border-radius: 10px;
+    background-color: #0d9de3;
 }
 
 
@@ -93,14 +113,37 @@
     margin: 0;
 }
 
+.wind-and-feel {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wind-and-feel > p {
+    margin: 0;
+}
+
 .icon-and-description {
-    background-color: aquamarine;
     height: 90%;
-    width: 40%;;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #4e6969;
+    border-radius: 10px;
+    background-color: #0d9de3;
+}
+
+.icon-and-description > p {
+    font-size: 30px;
+    margin: 0;
+}
+
+#current-description-image {
+    height: 70%;
 }
 
 .five-day-forecast {
-    background-color: lightgreen;
     height: 40%;
     padding: 5px;
     display: flex;
@@ -110,8 +153,39 @@
 }
 
 .hourly-data {
-    height: 18%;
-    background-color: lightcoral;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #4e6969;
+    border-radius: 10px;
+    background-color: #0d9de3;
+}
+
+.weekday-and-time, .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance, .hourly-description {
+    width: 20%;
+    font-size: 20px;
+}
+
+.weekday-and-time, .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance > p, .hourly-description > p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.weekday-and-time, .hourly-temperature {
+    text-align: center;
+    width: 10%
+}
+
+.hourly-precipitation-chance {
+    display: flex;
+}
+
+.hourly-description {
     display: flex;
     justify-content: space-between;
+}
+
+#precipitation-icon {
+    height: 100%;
 }
