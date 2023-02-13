@@ -189,3 +189,13 @@ body {
 #precipitation-icon {
     height: 100%;
 }
+
+.five-day-forecast::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.five-day-forecast::-webkit-scrollbar-thumb {
+    background-color: #0d9de3;
+    border: 1px solid #4e6969;
+    border-radius: 5px;
+}
