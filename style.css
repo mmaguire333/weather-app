@@ -1,6 +1,14 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
 body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background: linear-gradient(15deg, #0d9de3 10%, #01bfff 15%, #00ccff, 30%, #f1f1f1 60%, #7f9ba6);
+    background: linear-gradient(15deg, #0d9de3 10%, #01bfff 20%, #00ccff 35%, #f1f1f1 60%, #7f9ba6);
 }
 
 .header {
@@ -13,10 +21,10 @@ body {
 }
 
 .content {
-    width: 50vw;
-    height: 80vh;
+    max-width: 1000px;
     padding: 10px;
     margin: auto;
+    margin-bottom: 50px;
     border: 3px solid #4e6969;
     border-radius: 10px;
     display: flex;
@@ -27,9 +35,9 @@ body {
 }
 
 .content-header {
-    height: 10%;
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,8 +45,11 @@ body {
 
 .city-name {
     text-align: right;
-    font-size: 34px;
     color:#4e6969;
+}
+
+.city-name-header {
+    font-size: 45px;
 }
 
 .searchbar-container {
@@ -49,7 +60,6 @@ body {
 
 .search-form {
     height: 30px;
-    width: 100%;
     display: flex;
     align-items: center;
     border: 2px solid #4e6969;
@@ -88,15 +98,15 @@ body {
 }
 
 .current-weather {
-    height: 40%;
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
 .current-weather-data {
-    height: 90%;
-    width: 40%;
+    width: 300px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,18 +124,18 @@ body {
 }
 
 .wind-and-feel {
-    font-size: 30px;
     display: flex;
     flex-direction: column;
 }
 
 .wind-and-feel > p {
+    font-size: 30px;
     margin: 0;
 }
 
 .icon-and-description {
-    height: 90%;
-    width: 40%;
+    width: 300px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -140,11 +150,11 @@ body {
 }
 
 #current-description-image {
-    height: 70%;
+    height: 200px;
 }
 
 .five-day-forecast {
-    height: 40%;
+    max-height: 250px;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -153,41 +163,53 @@ body {
 }
 
 .hourly-data {
-    height: 20%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
     border: 1px solid #4e6969;
     border-radius: 10px;
     background-color: #0d9de3;
 }
 
-.weekday-and-time, .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance, .hourly-description {
-    width: 20%;
-    font-size: 20px;
+.weekday-and-time {
+    font-size: 26px;
+    font-weight: bold;
+    border-bottom: 3px solid #f1f1f1;
 }
 
-.weekday-and-time, .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance > p, .hourly-description > p {
-    margin: 0;
+.data-container {
+    padding: 10px;
+    width: 67%;
     display: flex;
+    justify-content: space-between;
+    border: 3px solid #4e6969;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #87cefa;
+    color: #4e6969;
+}
+
+.hourly-precipitation-chance, .hourly-description {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.temp-data, .sky-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.weekday-and-time, .hourly-temperature {
+.hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance > p, .hourly-description > p {
+    font-size: 20px;
     text-align: center;
-    width: 10%
 }
 
-.hourly-precipitation-chance {
-    display: flex;
-}
-
-.hourly-description {
-    display: flex;
-    justify-content: space-between;
-}
-
-#precipitation-icon {
-    height: 100%;
+#precipitation-icon, .hourly-description > img {
+    height: 50px;
 }
 
 .five-day-forecast::-webkit-scrollbar {
@@ -198,4 +220,151 @@ body {
     background-color: #0d9de3;
     border: 1px solid #4e6969;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 1100px) {
+    .content {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .current-weather-data, .icon-and-description {
+        width: 220px;
+        height: 220px;
+    }
+
+    .temperature {
+        font-size: 55px;
+    }
+
+    .wind-and-feel > p, .icon-and-description > p {
+        font-size: 20px;
+    }
+
+    #current-description-image {
+        height: 150px
+    }
+
+    .data-container {
+        width: 80%;
+    }
+
+    .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance > p, .hourly-description > p {
+        font-size: 18px;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    .header > h1 {
+        font-size: 45px;
+    }
+    
+    .content {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .searchbar-container {
+        width: 150px;
+    }
+
+    #search {
+        font-size: 15px;
+    }
+    
+    .city-name-header {
+        font-size: 40px;
+    }
+    
+    .current-weather-data, .icon-and-description {
+        width: 150px;
+        height: 150px;
+    }
+
+    .temperature {
+        font-size: 45px;
+    }
+
+    .wind-and-feel > p, .icon-and-description > p {
+        font-size: 18px;
+    }
+    
+    #current-description-image {
+        height: 120px
+    }
+
+    .data-container {
+        width: 90%;
+    }
+
+    .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance > p, .hourly-description > p {
+        font-size: 16px;
+    }
+
+    #precipitation-icon, .hourly-description > img {
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .searchbar-container {
+        width: 120px;
+    }
+    
+    .search-form {
+        height: 20px;
+    }
+
+    #search {
+        font-size: 12px;
+        height: 15px;
+    }
+
+    #search-button {
+        height: 15px;
+    }
+    
+    .city-name-header {
+        font-size: 30px;
+    }
+    
+    .current-weather-data, .icon-and-description {
+        width: 110px;
+        height: 110px;
+    }
+
+    .temperature {
+        font-size: 30px;
+    }
+
+    .wind-and-feel > p, .icon-and-description > p {
+        font-size: 14px;
+    }
+
+    #current-description-image {
+        height: 80px
+    }
+
+    .data-container {
+        border: 1px solid #4e6969;
+    }
+
+    #precipitation-icon, .hourly-description > img {
+        height: 30px;
+    }
+
+    .hourly-temperature, .hourly-feels-like, .hourly-precipitation-chance > p, .hourly-description > p {
+        font-size: 12px;
+    }
+
+    .hourly-precipitation-chance, .hourly-description {
+        gap: 2px;
+    }
+
+    .five-day-forecast::-webkit-scrollbar {
+        width: 0;
+    }
 }

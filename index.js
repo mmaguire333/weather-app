@@ -132,11 +132,11 @@ async function displayPage(valueOfSearch) {
 
     const hourlyTemp = document.createElement('p');
     hourlyTemp.classList.add('hourly-temperature');
-    hourlyTemp.textContent = `${Math.round(forecast[i].temp)} °F`;
+    hourlyTemp.textContent = `Temperature: ${Math.round(forecast[i].temp)} °F`;
 
     const hourlyFeelsLike = document.createElement('p');
     hourlyFeelsLike.classList.add('hourly-feels-like');
-    hourlyFeelsLike.textContent = `Feels Like ${Math.round(forecast[i].feelsLike)} °F`;
+    hourlyFeelsLike.textContent = `Feels Like: ${Math.round(forecast[i].feelsLike)} °F`;
 
     const precipIconAndDataContainer = document.createElement('div');
     precipIconAndDataContainer.classList.add('hourly-precipitation-chance');
@@ -157,11 +157,23 @@ async function displayPage(valueOfSearch) {
     hourlyDescriptionAndImage.appendChild(hourlyDescription);
     hourlyDescriptionAndImage.appendChild(hourlyImage);
 
+    const tempAndFeelsLike = document.createElement('div');
+    tempAndFeelsLike.classList.add('temp-data');
+    const precipitationAndDescription = document.createElement('div');
+    precipitationAndDescription.classList.add('sky-data');
+
+    tempAndFeelsLike.appendChild(hourlyTemp);
+    tempAndFeelsLike.appendChild(hourlyFeelsLike);
+    precipitationAndDescription.appendChild(precipIconAndDataContainer);
+    precipitationAndDescription.appendChild(hourlyDescriptionAndImage);
+
+    const data = document.createElement('div');
+    data.classList.add('data-container');
+    data.appendChild(tempAndFeelsLike);
+    data.appendChild(precipitationAndDescription);
+
     hourlyDataContainer.appendChild(weekday);
-    hourlyDataContainer.appendChild(hourlyTemp);
-    hourlyDataContainer.appendChild(hourlyFeelsLike);
-    hourlyDataContainer.appendChild(precipIconAndDataContainer);
-    hourlyDataContainer.appendChild(hourlyDescriptionAndImage);
+    hourlyDataContainer.appendChild(data);
     forecastContainer.appendChild(hourlyDataContainer);
   }
 
