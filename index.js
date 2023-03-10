@@ -20,7 +20,7 @@ function capitalizeDescription(str) {
 }
 
 async function getLatLong(city) {
-  const latLonArray = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=45e75944bb8affc837985a8360bb4a02`, { mode: 'cors' })
+  const latLonArray = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=45e75944bb8affc837985a8360bb4a02`, { mode: 'cors' })
     .then((response) => response.json())
     .then((response) => [response[0].lat, response[0].lon])
     .catch((error) => {
